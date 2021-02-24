@@ -1,0 +1,23 @@
+
+import java.util.Scanner;
+public class Day_2 {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+double mealcost = sc.nextDouble();
+int tip = sc.nextInt();
+int tax = sc.nextInt();
+
+double totalcost;
+
+double tipA = mealcost*tip/100;
+double taxA = mealcost*tax/100;
+
+totalcost = mealcost + tipA + taxA ;
+
+System.out.println(Math.round(totalcost));
+
+	}
+
+}
