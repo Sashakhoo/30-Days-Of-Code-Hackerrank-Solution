@@ -1,0 +1,61 @@
+import java.io.*;
+import java.util.*;
+class Node{
+    Node left,right;
+    int data;
+    Node(int data){
+        this.data=data;
+        left=right=null;
+    }
+}
+class Day23{
+
+	static void levelOrder(Node root){
+      Queue<Node> q = new LinkedList<>();
+      //enqueue current root
+      q.add(root); //3
+      
+      //while there are still nodes to process or as long as the size of queue is more than zero 
+      while(!q.isEmpty()){
+          //remove and return the node that we just added  //3
+        Node cur = q.remove();
+        
+        //process tree root
+        System.out.print(cur.data+" "); //print the node that is remove
+          
+        //check if 3 have left node  
+        if(cur.left !=null){ q.add(cur.left);}
+        //check if 3 have right node 
+        if(cur.right !=null){q.add(cur.right);}
+      }
+      
+    }
+
+	public static Node insert(Node root,int data){
+        if(root==null){
+            return new Node(data);
+        }
+        else{
+            Node cur;
+            if(data<=root.data){
+                cur=insert(root.left,data);
+                root.left=cur;
+            }
+            else{
+                cur=insert(root.right,data);
+                root.right=cur;
+            }
+            return root;
+        }
+    }
+    public static void main(String args[]){
+            Scanner sc=new Scanner(System.in);
+            int T=sc.nextInt();
+            Node root=null;
+            while(T-->0){
+                int data=sc.nextInt();
+                root=insert(root,data);
+            }
+            levelOrder(root);
+        }	
+}
