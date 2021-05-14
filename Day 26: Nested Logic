@@ -1,0 +1,37 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Day26NestedLogic {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int dayreturned = sc.nextInt();
+        int monthreturned = sc.nextInt();
+        int yearreturned = sc.nextInt();
+
+        int daydue = sc.nextInt();
+        int monthdue = sc.nextInt();
+        int yeardue = sc.nextInt();
+
+        int fine;
+        if(yearreturned > yeardue){
+            fine = 10000;
+        }
+        else if (monthreturned>monthdue && yearreturned==yeardue){
+            fine = 500*(monthreturned-monthdue);
+        }
+        else if(dayreturned>daydue && monthreturned==monthdue && yearreturned==yeardue){
+            fine = 15*(dayreturned-daydue);
+        }
+        else{
+            fine=0;
+        }
+        System.out.println(fine);
+        sc.close();
+    }
+    
+}
