@@ -1,0 +1,37 @@
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+public class Day28 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N= sc.nextInt();
+        String regex = ".+@gmail\\.com$";
+        //pattern is created using pattern.compile() method , first parameter to indicates which patterns should be searched 
+        Pattern pattern = Pattern.compile(regex);
+
+        ArrayList<String> list = new ArrayList<>();
+        
+        for(int i =0 ; i<N;i++){
+            String firstName = sc.next();
+            String emailId = sc.next();
+            
+            //matcher method is used to search for a method in a string 
+            Matcher matcher = pattern.matcher(emailId);
+            //matcher.find returns true or false
+            if(matcher.find()){
+             list.add(firstName);
+            }
+            
+        }
+        //sort the first name according to alphabet 
+        Collections.sort(list);
+        // loop through list 
+        list.forEach(System.out::println);
+        
+        sc.close();
+       
+    }
+}
